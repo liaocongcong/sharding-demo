@@ -1,0 +1,41 @@
+#server:
+#  port: 9571
+#
+## 一个实体类对应两张表，覆盖
+#spring:
+#  application:
+#    name: service-shrading
+#  main:
+#    allow-bean-definition-overriding: true
+#
+#  shardingsphere:
+#    datasource:
+#      names: m1
+#      m1:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        jdbc-url: jdbc:mysql://10.68.61.34:3306/shardingdb?autoReconnect=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+#        username: admin_user
+#        password: admin_user
+#    sharding:
+#      tables:
+#        course:
+#          # 指定表的数据分布情况，配置数据节点
+#          actual-data-nodes: m1.course_$->{1..2}
+#          # 指定表的主键生成策略为SNOWFLAKE
+#          key‐generator:
+#            column: cid
+#            type: SNOWFLAKE
+#          # 指定表的分片策略，分片策略包括分片键和分片算法
+#          table-strategy:
+#            inline:
+#              sharding-column: cid
+#              algorithm-expression: course_$->{cid % 2 + 1}
+#
+#  jpa:
+#    hibernate:
+#
+#      #    控制台显示SQL
+#      show-sql: true
+#      #     更新或者创建数据表结构
+#      ddl-auto: update

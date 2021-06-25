@@ -1,0 +1,7 @@
+CREATE TABLE `course_1`  (
+  `cid` bigint(20) NOT NULL,
+  `CHAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `USER_ID` bigint(20) NOT NULL,
+  `CSTATUS` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`cid`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
